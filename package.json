@@ -22,9 +22,11 @@
   },
   "homepage": "https://github.com/ErayOnder/llm-service#readme",
   "dependencies": {
+    "@langchain/ollama": "^0.2.4",
     "@nestjs/common": "^11.1.6",
     "@nestjs/core": "^11.1.6",
     "@nestjs/platform-express": "^11.1.6",
+    "langchain": "^0.3.34",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2"
   },
