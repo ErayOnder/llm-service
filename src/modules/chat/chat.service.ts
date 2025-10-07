@@ -29,10 +29,10 @@ export class ChatService {
   async generate(dto: GenerateRequestDto): Promise<GenerateResponseDto> {
     try {
       if (this.isOllamaAvailable) {
-        const response = await this.llm.invoke(dto.message);
+        const response = await this.llm.invoke(dto.prompt);
         return new GenerateResponseDto(response);
       } else {
-        return this.getFallbackResponse(dto.message);
+        return this.getFallbackResponse(dto.prompt);
       }
     } catch (error) {
       this.logger.error('Error in generate:', error);
@@ -42,11 +42,11 @@ export class ChatService {
     }
   }
 
-  private getFallbackResponse(message: string): GenerateResponseDto {
+  private getFallbackResponse(prompt: string): GenerateResponseDto {
     const fallbackResponses = [
-      `I'm a demo chatbot. Ollama isn't connected yet, but I received your message: ${message}`,
-      `Hello! I'm currently running in demo mode. Your message was: ${message}`,
-      `Thanks for your message! I'm working in fallback mode right now. You said: ${message}`,
+      `I'm a demo chatbot. Ollama isn't connected yet, but I received your prompt: ${prompt}`,
+      `Hello! I'm currently running in demo mode. Your prompt was: ${prompt}`,
+      `Thanks for your prompt! I'm working in fallback mode right now. You said: ${prompt}`,
     ];
     const randomResponse = fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
     return new GenerateResponseDto(randomResponse);

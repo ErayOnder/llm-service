@@ -3,7 +3,7 @@ import { ChatService } from './chat.service';
 import { GenerateRequestDto } from './dto/generate-request.dto';
 import { GenerateResponseDto } from './dto/generate-response.dto';
 
-@Controller()
+@Controller('chat')
 export class ChatController {
   constructor(private readonly chatService: ChatService) {}
 

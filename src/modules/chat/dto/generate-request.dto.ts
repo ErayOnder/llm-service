@@ -1,7 +1,11 @@
-import { IsString, IsNotEmpty } from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional } from 'class-validator';
 
 export class GenerateRequestDto {
   @IsString()
   @IsNotEmpty()
-  message: string;
+  prompt: string;
+
+  @IsString()
+  @IsOptional()
+  model?: string;
 }
